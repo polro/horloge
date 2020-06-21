@@ -10,9 +10,9 @@ Pour ces deux dernières fonctions, on peut mettre l'heure actuelle, ou le temps
 
 ## Pour installer cette appli :
 Tout d'abord télécharger les fichier puis décompresser le fichier zip obtenu.
-Ensuite ouvrez le fichier index.php, qui se trouve dans le dossier décompressé, avec un éditeur de texte, puis à la première ligne $etablissement = 'lycée « Nom du lycee »';, remplacer lycée « Nom du lycee » par celui de votre établissement, par exemple :
-- $etablissement = 'collège Molière';
-- $etablissement = 'lycée Molière';
+Ensuite ouvrez le fichier index.php, qui se trouve dans le dossier décompressé, avec un éditeur de texte, puis à la première ligne **$etablissement = 'lycée « Nom du lycee »'**;, remplacer **lycée « Nom du lycee »** par celui de votre établissement, par exemple :
+- $etablissement = '**collège Molière**';
+- $etablissement = '**lycée Molière**';
 
 Puis modifier le fichier logo.png avec le logo de votre établissement, celui-ci doit aussi s'appeler logo.png !
 
