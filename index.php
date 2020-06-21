@@ -13,7 +13,7 @@
       	// Pour afficher le nom de l'établissement sur la première page
       	var etablissement = <?php echo '"'.$etablissement.'"' ?>;
       	
-      	//Variable pour la fin des heures de cours
+      	//Variables pour la fin des heures de cours
       	var premiere_heure = [8, 55];
       	var deuxieme_heure = [9, 55];
       	var troisieme_heure = [11, 5];
