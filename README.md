@@ -10,7 +10,8 @@ Pour ces deux dernières fonctions, on peut mettre l'heure actuelle, ou le temps
 
 ## Pour installer cette appli :
 Tout d'abord télécharger les fichier puis décompresser le fichier zip obtenu.
-Ensuite ouvrez le fichier index.php, qui se trouve dans le dossier décompressé, avec un éditeur de texte, puis à la première ligne <code><?php $etablissement = 'lycée « Nom du lycee »'; ?></code>,
+Ensuite ouvrez le fichier index.php, qui se trouve dans le dossier décompressé, avec un éditeur de texte, puis à la première ligne 
+  <?php $etablissement = 'lycée « Nom du lycee »'; ?>
 remplacer lycée « Nom du lycee » par celui de votre établissement, par exemple :
 - <code><?php $etablissement = 'collège Molière'; ?></code>
 - ou <code><?php $etablissement = 'lycée Molière'; ?></code>
