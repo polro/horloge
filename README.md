@@ -1,4 +1,4 @@
-# horloge
+# Horloge
 It's a clock for school
 
 ## Fonctions :
@@ -10,10 +10,10 @@ Pour ces deux dernières fonctions, on peut mettre l'heure actuelle, ou le temps
 
 ## Pour installer cette appli :
 Tout d'abord télécharger les fichier puis décompresser le fichier zip obtenu.
-Ensuite ouvrez le fichier index.php, qui se trouve dans le dossier décompressé, avec un éditeur de texte, puis à la première ligne <?php $etablissement = 'lycée « Nom du lycee »'; ?>,
+Ensuite ouvrez le fichier index.php, qui se trouve dans le dossier décompressé, avec un éditeur de texte, puis à la première ligne <code><?php $etablissement = 'lycée « Nom du lycee »'; ?></code>,
 remplacer lycée « Nom du lycee » par celui de votre établissement, par exemple :
-- <?php $etablissement = 'collège Molière'; ?>
-- ou <?php $etablissement = 'lycée Molière'; ?>
+- <code><?php $etablissement = 'collège Molière'; ?></code>
+- ou <code><?php $etablissement = 'lycée Molière'; ?></code>
 
 Puis modifier le fichier logo.png avec le logo de votre établissement, celui-ci doit aussi s'appeler logo.png !
 
