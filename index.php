@@ -1,5 +1,4 @@
-<?php $etablissement = 'lycée « Nom du lycee »'; ?>
-
+<?php $etablissement = 'lycée « Nom du lycée »'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,6 +12,20 @@
       	let time_server = new Date(<?php echo '"'.date('c', time()).'"';?>);let time_ordi = new Date();var ecart = time_server -  time_ordi; if (Math.abs(ecart) < 5000){var ecart = 0}
       	// Pour afficher le nom de l'établissement sur la première page
       	var etablissement = <?php echo '"'.$etablissement.'"' ?>;
+      	
+      	//Variable pour la fin des heures de cours
+      	var premiere_heure = [8, 55];
+      	var deuxieme_heure = [9, 55];
+      	var troisieme_heure = [11, 5];
+      	var quatrieme_heure = [12, 5];
+      	var cinquieme_heure = [13, 5];
+      	var sixieme_heure = [14, 5];
+      	var septieme_heure = [15, 5];
+      	var huitieme_heure = [16, 15];
+      	var neuvieme_heure = [17, 15];
+      	var dixieme_heure = [18, 15];
+      	var fin_mercredi = [13, 5];
+      	var fin_samedi = [12, 5];
       </script>
       <script src="script.js"></script>
   </head>

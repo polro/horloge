@@ -196,51 +196,32 @@ function fin_cours() {
   var deb = new Date(Date.parse(ordi)+ecart);
   var fin = new Date(Date.parse(ordi)+ecart);
   fin.setSeconds(0);
-  if (deb.getDay() == 0 | (deb.getDay() == 6 & (deb.getHours() > 12 | (deb.getHours() == 12 & deb.getMinutes()>5))) | (deb.getDay() == 3 & (deb.getHours() > 13 | (deb.getHours() == 13 & deb.getMinutes()>5)))) {
+  if (deb.getDay() == 0 | (deb.getDay() == 6 & (deb.getHours() > fin_samedi[0] | (deb.getHours() == fin_samedi[0] & deb.getMinutes()>fin_samedi[1]))) | (deb.getDay() == 3 & (deb.getHours() > fin_mercredi[0] | (deb.getHours() == fin_mercredi[0] & deb.getMinutes()>fin_mercredi[1])))) {
   /*En dehors des heures de l'établissement, il ne se passe rien !*/}
   else {
-    switch (deb.getHours()) {
-      case 8:
-        if (deb.getMinutes() < 55) {
-          fin.setMinutes(55);
-        }
-        else {fin.setHours(9);fin.setMinutes(55);}
-        break;
-      case 9:
-        if (deb.getMinutes() < 55) {
-          fin.setMinutes(55);
-        }
-        else {fin.setHours(11);fin.setMinutes(5);}
-        break;
-      case 10:
-        fin.setHours(11);fin.setMinutes(5);
-        break;
-      case 11:
-      case 12:
-      case 13:
-      case 14:
-        if (deb.getMinutes() < 5) {
-          fin.setMinutes(5);
-        }
-        else {fin.setHours(parseInt(deb.getHours()) + 1);fin.setMinutes(5);}
-        break;
-      case 15:
-        fin.setHours(16);fin.setMinutes(15);
-        break;
-      case 16:
-      case 17:
-        if (deb.getMinutes() < 15) {
-          fin.setMinutes(15);
-        }
-        else {fin.setHours(parseInt(deb.getHours()) + 1);fin.setMinutes(15);}
-        break;
-      case 18:
-        if (deb.getMinutes() < 15) {
-          fin.setMinutes(15);
-        }
-        break;
-      default:
-    }
+
+  	if (deb.getHours()*60+deb.getMinutes() < premiere_heure[0]*60+premiere_heure[1]) {
+  		fin.setHours(premiere_heure[0]); fin.setMinutes(premiere_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < deuxieme_heure[0]*60+deuxieme_heure[1]) {
+  		fin.setHours(deuxieme_heure[0]); fin.setMinutes(deuxieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < troisieme_heure[0]*60+troisieme_heure[1]) {
+  		fin.setHours(troisieme_heure[0]); fin.setMinutes(troisieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < quatrieme_heure[0]*60+quatrieme_heure[1]) {
+  		fin.setHours(quatrieme_heure[0]); fin.setMinutes(quatrieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < cinquieme_heure[0]*60+cinquieme_heure[1]) {
+  		fin.setHours(cinquieme_heure[0]); fin.setMinutes(cinquieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < sixieme_heure[0]*60+sixieme_heure[1]) {
+  		fin.setHours(sixieme_heure[0]); fin.setMinutes(sixieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < septieme_heure[0]*60+septieme_heure[1]) {
+  		fin.setHours(septieme_heure[0]); fin.setMinutes(septieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < huitieme_heure[0]*60+huitieme_heure[1]) {
+  		fin.setHours(huitieme_heure[0]); fin.setMinutes(huitieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < neuvieme_heure[0]*60+neuvieme_heure[1]) {
+  		fin.setHours(neuvieme_heure[0]); fin.setMinutes(neuvieme_heure[1]);
+  	} else if (deb.getHours()*60+deb.getMinutes() < dixieme_heure[0]*60+dixieme_heure[1]) {
+  		fin.setHours(dixieme_heure[0]); fin.setMinutes(dixieme_heure[1]);
+  	}
+
   }
   return fin;
 }
