@@ -21,4 +21,9 @@ Renomer le dossier décompressé en horloge puis déposer le dossier compressé 
 Voilà tout est prêt ! Pour accéder à l'horloge, il suiffit de rentrer le nom de domaine de votre établissement, suivi de /horloge, en reprenant l'exemple du lycée Molière, ça donnerai lycee-moliere.fr/horloge
 
 
-## Pour modifier les heures de fin de cours (utiliser dans la fonction Contrôle)
+## Pour modifier les heures de fin de cours (utilisées dans la fonction Contrôle)
+Ouvrez le fichier index.php avec un éditeur de texte. 
+Repérez la ligne **//Variables pour la fin des heures de cours**
+Dessous vous devez renseigner la fin de chaque heure de cours, il y a 10 heures référencées (si vous utilisez moins d'heures, remplissez les heures non utilisées avec la dernière heure de cours de votre établissement).
+Par exemple la ligne **var premiere_heure = [8, 55];** signifie que la première heure se termine à 8h55, si vous terminez à 8h30 écrivez **var premiere_heure = [8, 30];**.
+Vous pouvez également renseigner les heures de fin de cours pour le mercredi et le samedi, si vous ne travaillez pas un de ces jours saisissez **var fin_samedi = [0, 0];**.
