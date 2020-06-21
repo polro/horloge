@@ -36,9 +36,10 @@ function appendLeadingZeroes(n){
 }
 
 function printTime(fin) { /*Fonction d'affichage de l'horloge*/
-  var date = new Date();
+  let ordi = new Date();
+  var date = new Date(Date.parse(ordi)+ecart);
   if (affiche_temps_restant == true) {
-    var d = fin - date;
+    let d = fin - date;
     var hours = appendLeadingZeroes(parseInt(d / 3600000));
     var mins = appendLeadingZeroes(parseInt((d-hours*3600000)/60000));
     var secs = appendLeadingZeroes(parseInt(((d-hours*3600000)-mins*60000)/1000));
@@ -67,9 +68,9 @@ function printTime(fin) { /*Fonction d'affichage de l'horloge*/
 }
 
 function print_defined_Time(time) {
-  var hours = appendLeadingZeroes(time.getHours());
-  var mins = appendLeadingZeroes(time.getMinutes());
-  var secs = appendLeadingZeroes(time.getSeconds());
+  let hours = appendLeadingZeroes(time.getHours());
+  let mins = appendLeadingZeroes(time.getMinutes());
+  let secs = appendLeadingZeroes(time.getSeconds());
   return hours+' : '+mins+' : '+secs;
 }
 
@@ -78,9 +79,8 @@ function examen_page(param) {
     clearInterval(chrono);
     document.getElementById("controle_page").innerHTML = '';
     document.getElementById("horloge_page").innerHTML = '';
-    var session = readCookie('session');
     document.getElementById("corps").style.display = 'flex';
-    if (session == null) {
+    if (readCookie('session') == null) {
       document.getElementById("corps").innerHTML = '<form name="form2">Quelle est la durée de l\'examen en HH:MM <br/><input type="time" name="input" value="01:00" onKeyPress="if(event.keyCode == 13) examen(form2);">  <input type="button" name="bouton" value="Départ" onClick="examen(form2)"></form>';
     }
     else {
@@ -113,15 +113,17 @@ function examen(form2) {
       examen_page();
     }
     else {
-      var deb = new Date();
+      let ordi = new Date();
+      var deb = new Date(Date.parse(ordi)+ecart);
       var fin = new Date();
       fin.setHours(deb.getHours()+parseInt(choix[0]));
       fin.setMinutes(deb.getMinutes()+parseInt(choix[1]));
+      fin.setSeconds(deb.getSeconds());
       if (fin - deb < 3600000) {
         var sortie = fin;
       }
       else {
-        var sortie = new Date();
+        var sortie = new Date(deb);
         sortie.setHours(deb.getHours()+1);
       }
       document.cookie = 'session='+deb+'$'+sortie+'$'+fin+'; expires='+fin.toGMTString()+'; path=/';
@@ -190,8 +192,9 @@ function masquer_afficher_entete() {
 }
 
 function fin_cours() {
-  var deb = new Date();
-  var fin = new Date();
+  let ordi = new Date();
+  var deb = new Date(Date.parse(ordi)+ecart);
+  var fin = new Date(Date.parse(ordi)+ecart);
   fin.setSeconds(0);
   if (deb.getDay() == 0 | (deb.getDay() == 6 & (deb.getHours() > 12 | (deb.getHours() == 12 & deb.getMinutes()>5))) | (deb.getDay() == 3 & (deb.getHours() > 13 | (deb.getHours() == 13 & deb.getMinutes()>5)))) {
   /*En dehors des heures de l'établissement, il ne se passe rien !*/}
@@ -248,10 +251,9 @@ function controle_page() {
   document.getElementById("exam").innerHTML = '';
   document.getElementById("horloge_page").innerHTML = '';
   document.getElementById("affiche_entete").innerHTML = '';
-  var session = readCookie('session_controle');
   document.getElementById("controle_page").style.display = 'flex';
-  if (session == null) {
-    var fin_du_cours = fin_cours();
+  if (readCookie('session_controle') == null) {
+    let fin_du_cours = fin_cours();
     document.getElementById("controle_page").innerHTML = '<form class="horloge" name="form2">Quelle est l\'heure de fin du contrôle en HH:MM <br/><input type="time" name="input" value="'+appendLeadingZeroes(fin_du_cours.getHours())+':'+appendLeadingZeroes(fin_du_cours.getMinutes())+'" onKeyPress="if(event.keyCode == 13) control(form2);">  <input type="button" value="Départ" onClick="control(form2)"></form>';
   }
   else {
@@ -261,12 +263,13 @@ function controle_page() {
 
 function control(form2) { /* Validation sur la page Contrôle */
   clearInterval(chrono);
-  var session = readCookie('session_controle');
+  let session = readCookie('session_controle');
   document.getElementById("controle_page").style.display = 'block';
   if (session == null) { /*Si il n'y a pas d'horloge en cours*/
     var choix = document.form2.input.value.split(':');
     if ((choix[0] != '') & (choix[1] != '')) {
-      var deb = new Date();
+      let ordi = new Date();
+      var deb = new Date(Date.parse(ordi)+ecart);
       var fin = new Date();
       fin.setHours(parseInt(choix[0]));
       fin.setMinutes(parseInt(choix[1]));
@@ -280,8 +283,7 @@ function control(form2) { /* Validation sur la page Contrôle */
     var fin = new Date(session[2]);
     var choix = ['19','87'];
   }
-  var date = new Date();
-  if ((fin - date < 0) | (choix[0] == '') | (choix[1] == '')) {
+  if ((fin - deb < 0) | (choix[0] == '') | (choix[1] == '')) {
       controle_page();
   }
   else {
@@ -303,13 +305,14 @@ function horloge_page() {
   document.getElementById("exam").innerHTML = '';
   document.getElementById("controle_page").innerHTML = '';
   document.getElementById("affiche_entete").innerHTML = '';
-  document.getElementById("horloge_page").innerHTML = '<p class="horloge">Au lycée Marx Dormoy, il est actuellement</p><h1 class="horloge" id="horloge"></h1>';
+  document.getElementById("horloge_page").innerHTML = '<p class="horloge">Au '+etablissement+', il est actuellement</p><h1 class="horloge" id="horloge"></h1>';
   chrono = setInterval(printTime2, 1000);
   function printTime2() {
-    var d = new Date();
-    var hours = appendLeadingZeroes(d.getHours());
-    var mins = appendLeadingZeroes(d.getMinutes());
-    var secs = appendLeadingZeroes(d.getSeconds());
+    let ordi = new Date();
+    let d = new Date(Date.parse(ordi)+ecart);
+    let hours = appendLeadingZeroes(d.getHours());
+    let mins = appendLeadingZeroes(d.getMinutes());
+    let secs = appendLeadingZeroes(d.getSeconds());
     document.getElementById("horloge").innerHTML = hours+' : '+mins+' : '+secs;
   }
 }

@@ -1,14 +1,20 @@
+<?php $etablissement = 'lycée « Nom du lycee »'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Horloge du Lycée Marx Dormoy</title>
-      <meta name="author" content="M. Pol" />
+      <title>Horloge du <?php echo $etablissement; ?></title>
+      <meta name="author" content="Romuald Pol" />
       <link rel="stylesheet" type="text/css" href="style.css" />
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <link rel="shortcut icon" type="image/x-icon" href="favicon.png"> 
-      <script>let time_server = new Date(<?php echo '"'.date('c', time()).'"';?>);let time_ordi = new Date();var ecart = time_server -  time_ordi; if (Math.abs(ecart) < 1000){window.location = 'http://lycee-marxdormoy-creteil.fr/horloge/index.html';}
+      <script>
+      	// Si l'horloge de l'ordinateur à 5 seconde d'écart avec celle du serveur, on compte l'écart et on remet à jour l'horloge affichée
+      	let time_server = new Date(<?php echo '"'.date('c', time()).'"';?>);let time_ordi = new Date();var ecart = time_server -  time_ordi; if (Math.abs(ecart) < 5000){var ecart = 0}
+      	// Pour afficher le nom de l'établissement sur la première page
+      	var etablissement = <?php echo '"'.$etablissement.'"' ?>;
       </script>
-      <script src="script2.js"></script>
+      <script src="script.js"></script>
   </head>
   <body>
     <div id="overlay" onClick="mode_exam()">
@@ -57,7 +63,7 @@
 
       <div id="footer">
         <p onClick="mode_exam()" style="cursor:pointer;">Cliquez ici pour voir la mise en place du mode examen avec la calculatrice.</p>
-        <p>***</p>
+        <p>2019-<?php echo date('Y',time()); ?> - <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png" title="Ce site est mis à disposition selon les termes de la Licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International."/></a> - <a style="text-decoration: none; color: black;" href="https://github.com/polro/horloge">Romuald Pol</a></p>
         <p style="cursor:pointer;" onclick="fullscreen()">Cliquez ici pour activer ou désactiver le mode plein écran.</p>
       </div>
     </div>
