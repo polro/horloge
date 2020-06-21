@@ -19,3 +19,6 @@ Puis modifier le fichier logo.png avec le logo de votre établissement, celui-ci
 Renomer le dossier décompressé en horloge puis déposer le dossier compressé dans le dossier racine de votre site internet, si vous en avez un, sinon il faut créer un hébergement.
 
 Voilà tout est prêt ! Pour accéder à l'horloge, il suiffit de rentrer le nom de domaine de votre établissement, suivi de /horloge, en reprenant l'exemple du lycée Molière, ça donnerai lycee-moliere.fr/horloge
+
+
+## Pour modifier les heures de fin de cours (utiliser dans la fonction Contrôle)
